@@ -74,7 +74,12 @@
                 <div class="header-right-logo">
                     <img :src="`assets/img/avatar${contacts[activeIndex].avatar}.jpg`" :alt="`Avatar ${contacts[activeIndex].name}`">
                     <h3><span id="header-right-contact-name">{{contacts[activeIndex].name}}</span> <br>
-                        <small class="time">Ultimo accesso il {{contacts[activeIndex].messages[numberOfMessage(activeIndex)].date}}</small>
+                        <!-- <small class="time">Ultimo accesso il {{contacts[activeIndex].messages[numberOfMessage(activeIndex)].date}}</small> -->
+
+                        <!-- <small class="time" v-if="">Ultimo accesso il {{checkTodayDate(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)}}</small> -->
+
+                        <small class="time" v-if="checkTodayDate(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)">Ultimo accesso oggi alle {{dateModifier(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)}}</small>
+                        <small class="time" v-else>Ultimo accesso il {{contacts[activeIndex].messages[numberOfMessage(activeIndex)].date}}</small>
                     </h3>
                 </div>
                 <div class="header-right-icons">
@@ -98,7 +103,7 @@
                                 </div>
                             </div>
                         </div>
-                        <span class="message-time">{{item.date}}</span>
+                        <span class="message-time">{{dateModifier(item.date)}}</span>
                     </div>
                 </div>
             </div>
@@ -117,6 +122,7 @@
         <!-- /contenitore dx -->
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
