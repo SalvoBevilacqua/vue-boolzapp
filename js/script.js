@@ -2,7 +2,6 @@ const { createApp } = Vue;
 const dt = luxon.DateTime;
 const currentDate = new Date().toDateString();
 
-console.log(currentDate);
 createApp({
     data() {
         console.log(allcontacts);
@@ -19,14 +18,21 @@ createApp({
     methods: {
         updateIndex(index) {this.activeIndex = index},
         numberOfMessage(index) {return this.contacts[index].messages.length - 1},
-        insertMessage(index,text) {this.contacts[index].messages.push({
-            date: '10/01/2020 15:30:55',
+        insertMessage(index,text) {
+            const date = this.updatedDate();
+
+            this.contacts[index].messages.push({
+            date: date,
             message: text,
             status: 'sent'
-        })
+        });
+        this.message = '';
         },
-        receiveMessage(index) {this.contacts[index].messages.push({
-            date: '10/01/2020 15:30:55',
+        receiveMessage(index) {
+            const date = this.updatedDate();
+
+            this.contacts[index].messages.push({
+            date: date,
             message: 'apposto',
             status: 'received'
         })
@@ -46,6 +52,11 @@ createApp({
                 dateFlag = true;
             }
             return dateFlag;
+        },
+        updatedDate() {
+            const date = new Date();
+            let tempDate = `${date.getDate()}/${date.getMonth() +1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+            return tempDate;
         }
     }
 }).mount("#app");

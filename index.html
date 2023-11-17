@@ -76,8 +76,6 @@
                     <h3><span id="header-right-contact-name">{{contacts[activeIndex].name}}</span> <br>
                         <!-- <small class="time">Ultimo accesso il {{contacts[activeIndex].messages[numberOfMessage(activeIndex)].date}}</small> -->
 
-                        <!-- <small class="time" v-if="">Ultimo accesso il {{checkTodayDate(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)}}</small> -->
-
                         <small class="time" v-if="checkTodayDate(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)">Ultimo accesso oggi alle {{dateModifier(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)}}</small>
                         <small class="time" v-else>Ultimo accesso il {{contacts[activeIndex].messages[numberOfMessage(activeIndex)].date}}</small>
                     </h3>
