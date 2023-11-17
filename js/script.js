@@ -9,7 +9,8 @@ createApp({
             contacts: allcontacts,
             activeIndex: 0,
             message: '',
-            timer: null            
+            timer: null,
+            searchText: ''
         }
     },
     created() {
@@ -57,6 +58,16 @@ createApp({
             const date = new Date();
             let tempDate = `${date.getDate()}/${date.getMonth() +1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
             return tempDate;
+        },
+        search() {
+            let textToSearch = this.searchText.toLowerCase();
+            this.contacts.forEach(element => {
+                if (element.name.toLowerCase().includes(textToSearch)) {
+                    element.visible = true;
+                } else {
+                    element.visible = false;
+                }
+            })
         }
     }
 }).mount("#app");

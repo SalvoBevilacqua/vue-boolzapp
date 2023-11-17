@@ -185,6 +185,10 @@ body {
   background: #f4f5f5;
 }
 
+.opened {
+  background: #f4f5f5;
+}
+
 .left .contacts .contact:last-child {
   border-bottom: 0;
 }

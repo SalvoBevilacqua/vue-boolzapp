@@ -44,13 +44,15 @@
                 <label class="search-label" for="search">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </label>
-                <input id="contacts-filter" class="left-searchbar-input" placeholder="Cerca o inizia una nuova chat"
-                    name="search">
+                <input id="contacts-filter" v-model="searchText" @keyup="search(searchText)" class="left-searchbar-input" placeholder="Cerca o inizia una nuova chat" name="search">
             </div>
 
             <!-- CONTATTI -->
             <div class="contacts">
-                <div class="contact" v-for="(item, index) in contacts" :key="item.name" @click="updateIndex(index)">
+                <div class="contact" v-for="(item, index) in contacts" :key="item.name"
+                @click="updateIndex(index)"
+                v-show="item.visible"
+                :class="[(index === activeIndex) ? 'opened' : '']">
                     <div class="contact-logo">
                         <img :src="`assets/img/avatar${item.avatar}.jpg`" :alt="`Avatar ${item.name}`">
                     </div>
@@ -73,9 +75,8 @@
             <div class="header-right">
                 <div class="header-right-logo">
                     <img :src="`assets/img/avatar${contacts[activeIndex].avatar}.jpg`" :alt="`Avatar ${contacts[activeIndex].name}`">
-                    <h3><span id="header-right-contact-name">{{contacts[activeIndex].name}}</span> <br>
-                        <!-- <small class="time">Ultimo accesso il {{contacts[activeIndex].messages[numberOfMessage(activeIndex)].date}}</small> -->
-
+                    <h3>
+                        <span id="header-right-contact-name">{{contacts[activeIndex].name}}</span> <br>
                         <small class="time" v-if="checkTodayDate(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)">Ultimo accesso oggi alle {{dateModifier(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)}}</small>
                         <small class="time" v-else>Ultimo accesso il {{contacts[activeIndex].messages[numberOfMessage(activeIndex)].date}}</small>
                     </h3>
@@ -111,7 +112,8 @@
                 <div class="right-footer-icon">
                     <i class="far fa-smile"></i>
                 </div>
-                <input class="new-message-inputs" placeholder="Scrivi un messaggio" v-model="message" @keyup.enter="insertMessage(activeIndex, message), autoMessage(activeIndex)">
+                <input class="new-message-inputs" placeholder="Scrivi un messaggio" v-model="message"
+                @keyup.enter="insertMessage(activeIndex, message), autoMessage(activeIndex)">
                 <div class="right-footer-icon">
                     <i class="fa fa-microphone" aria-hidden="true"></i>
                 </div>
