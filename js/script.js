@@ -70,6 +70,9 @@ createApp({
                     element.visible = false;
                 }
             })
+        },
+        removeMessage(active, index) {
+            this.contacts[active].messages.splice(index, 1)
         }
     }
 }).mount("#app");
