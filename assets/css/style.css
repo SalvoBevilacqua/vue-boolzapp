@@ -263,11 +263,12 @@ body {
   position: relative;
   margin: 5px 0;
   padding: 15px 15px 20px 15px;
-  min-width: 40%;
+  /* min-width: 40%; */
   max-width: 60%;
   background: #fff;
   border-radius: 10px;
   font-size: 15px;
+  word-wrap: break-word;
 }
 
 .right .right-messages .message.received {
@@ -281,13 +282,27 @@ body {
 
 .right .right-messages .message .message-inner {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+}
+
+.sent .message-inner {
+  justify-content: end !important;
+  gap: 1rem;
+}
+
+.received .message-inner {
+  justify-content: flex-start !important;
+  gap: 1rem;
+}
+
+.received {
+  max-width: fit-content !important;
 }
 
 .right .right-messages .message .message-options {
   cursor: pointer;
   position: relative;
-  height: 95px;
+  /* height: 95px; */
 }
 
 .right .right-messages .message .message-options .fa-chevron-down {

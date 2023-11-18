@@ -1,6 +1,8 @@
 const { createApp } = Vue;
-const dt = luxon.DateTime;
-const currentDate = new Date().toDateString();
+let dt = luxon.DateTime;
+let currentDate = new Date().toDateString();
+
+console.log(currentDate);
 
 createApp({
     data() {
@@ -55,7 +57,7 @@ createApp({
             return dateFlag;
         },
         updatedDate() {
-            const date = new Date();
+            let date = new Date();
             let tempDate = `${date.getDate()}/${date.getMonth() +1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
             return tempDate;
         },
