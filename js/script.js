@@ -21,6 +21,13 @@ createApp({
     methods: {
         updateIndex(index) {this.activeIndex = index},
         numberOfMessage(index) {return this.contacts[index].messages.length - 1},
+        messageZero(array) {
+            let flag = false;
+            if (array.length === 0) {
+                flag = true;
+            }
+            return flag;
+        },
         insertMessage(index,text) {
             const date = this.updatedDate();
 
@@ -72,7 +79,11 @@ createApp({
             })
         },
         removeMessage(active, index) {
-            this.contacts[active].messages.splice(index, 1)
+            if (this.contacts[active].messages.length === 0) {
+                this.contacts[active].messages.pop();
+            } else {
+                this.contacts[active].messages.splice(index, 1);
+            }            
         }
     }
 }).mount("#app");
