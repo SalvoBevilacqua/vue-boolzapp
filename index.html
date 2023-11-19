@@ -64,11 +64,11 @@
                             <span v-if="!messageZero(item.messages)" class="time">
                             {{item.messages[numberOfMessage(index)].date}}
                             </span>
-                            <span v-else class="time">-</span>
+                            <span v-else class="time"></span>
                         </h3>
 
                         <small v-if="!messageZero(item.messages)">{{item.messages[numberOfMessage(index)].message}}</small>
-                        <small v-else>-</small>
+                        <small v-else>Informazione non disponibile</small>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                             <small class="time" v-if="checkTodayDate(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)">Ultimo accesso oggi alle {{dateModifier(contacts[activeIndex].messages[numberOfMessage(activeIndex)].date)}}</small>
                             <small class="time" v-else>Ultimo accesso il {{contacts[activeIndex].messages[numberOfMessage(activeIndex)].date}}</small>
                         </span>
-                        <span v-else>-</span>
+                        <span class="light_grey" v-else>Informazione non disponibile</span>
 
                     </h3>
                 </div>

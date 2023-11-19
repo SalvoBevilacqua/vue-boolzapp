@@ -24,6 +24,10 @@ body {
   z-index: 100;
 }
 
+.light_grey {
+  color: #B6B9BB;
+}
+
 .container {
   margin: auto;
   width: 80%;
