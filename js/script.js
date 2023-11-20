@@ -30,22 +30,23 @@ createApp({
         },
         insertMessage(index,text) {
             const date = this.updatedDate();
+            console.log(date);
 
             this.contacts[index].messages.push({
-            date: date,
-            message: text,
-            status: 'sent'
-        });
-        this.message = '';
+                date: date,
+                message: text,
+                status: 'sent'
+            });
+            this.message = '';
         },
         receiveMessage(index) {
             const date = this.updatedDate();
 
             this.contacts[index].messages.push({
-            date: date,
-            message: 'apposto',
-            status: 'received'
-        })
+                date: date,
+                message: 'apposto',
+                status: 'received'
+            })
         },
         autoMessage(index) {this.timer = setTimeout(this.receiveMessage, 1000, index)},
         dateModifier(fullDate) {
@@ -61,6 +62,7 @@ createApp({
             if (today === mess) {
                 dateFlag = true;
             }
+            console.log(today, mess);
             return dateFlag;
         },
         updatedDate() {
@@ -78,12 +80,8 @@ createApp({
                 }
             })
         },
-        removeMessage(active, index) {
-            if (this.contacts[active].messages.length === 0) {
-                this.contacts[active].messages.pop();
-            } else {
-                this.contacts[active].messages.splice(index, 1);
-            }            
+        removeMessage(active, index) {          
+            this.contacts[active].messages.splice(index, 1);                       
         }
     }
 }).mount("#app");
